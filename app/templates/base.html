@@ -1,0 +1,15 @@
+{% extends "bootstrap/base.html" %}
+
+{% block navbar %}
+    <nav class="navbar navbar-inverse" role="navigation">
+            <ul class="nav navbar-nav">
+                <li class="dropdown">
+                    <a href="{{ url_for('index') }}" class="dropdown-toggle" >Home</a>
+                </li>
+            </ul>
+    </nav>
+{% endblock %}
+
+{% block content %}
+{% block settings %}{% endblock %}
+{% endblock %}
