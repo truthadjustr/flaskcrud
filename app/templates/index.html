@@ -1,9 +1,5 @@
 {% extends "base.html" %}
 
-{% block settings %}
-    {% if not current_user.is_anonymous %}
-    <div align="center"><p>Welcome, {{ current_user }}</p></div>
-    {% else %}
-    <div align="center"></div>
-    {% endif %}
+{% block mycontent %}
+    <div align="center"><h1>WELCOME TO FLASKCRUD</h1><hr></div>
 {% endblock %}

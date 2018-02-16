@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+
+{% block mycontent %}
+    {% if user %}
+        <div align="center"><p>Welcome, <strong>{{ user }}</strong></p></div>
+        {% else %}
+        <div align="center">WELCOME</div>
+    {% endif %}
+{% endblock %}

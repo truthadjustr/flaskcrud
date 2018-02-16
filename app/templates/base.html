@@ -2,14 +2,21 @@
 
 {% block navbar %}
     <nav class="navbar navbar-inverse" role="navigation">
-            <ul class="nav navbar-nav">
-                <li class="dropdown">
-                    <a href="{{ url_for('index') }}" class="dropdown-toggle" >Home</a>
-                </li>
-            </ul>
+        <ul class="nav navbar-nav">
+            <li class="dropdown">
+                <a href="{{ url_for('index') }}" class="dropdown-toggle" >Home</a>
+            </li>
+            <li class="dropdown">
+                {% if user %}
+                <a href="{{ url_for('logout') }}" class="dropdown-toggle" >Logout</a>
+                {% else %}
+                <a href="{{ url_for('login') }}" class="dropdown-toggle" >Login</a>
+                {% endif %}
+            </li>
+        </ul>
     </nav>
 {% endblock %}
 
 {% block content %}
-{% block settings %}{% endblock %}
+    {% block mycontent %}{% endblock %}
 {% endblock %}
