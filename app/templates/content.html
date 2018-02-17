@@ -1,9 +1,52 @@
 {% extends "base.html" %}
 
+{% block scripts %}
+    {{ super() }}
+    <script>
+        function addHidden(theForm, key, value) {
+            // Create a hidden input element, and append it to the form:
+            var input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = key; // 'the key/name of the attribute/field that is sent to the server
+            input.value = value;
+            theForm.appendChild(input);
+        }
+
+        $(document).ready(function() {
+            $("a.submit").click(function() {
+                var theForm = document.forms['my_form01'];
+                if (this.id == "id01") {
+                    addHidden(theForm, 'conf', 'running');
+                } else {
+                    addHidden(theForm, 'conf', 'actual');
+                }
+                theForm.submit();
+            }); 
+        });
+    </script>
+{% endblock %}
+
 {% block mycontent %}
     {% if user %}
         <div align="center"><p>Welcome, <strong>{{ user }}</strong></p></div>
-        {% else %}
+    {% else %}
         <div align="center">WELCOME</div>
     {% endif %}
+
+    <form action="" method="post" name="my_form01">
+        <div class="col-sm-12">
+            <div class="btn-group pull-right fixedBtn">
+                <button type="button" class="btn btn-primary" id="update">Update</button>
+                <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a class="submit" href="" id="id01">Update</a></li>
+                    <li><a class="submit" href="" id="id02">Update and Apply</a></li>
+                </ul
+            </div>
+        </div>
+    </form>
+
 {% endblock %}
