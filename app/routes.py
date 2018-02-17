@@ -69,5 +69,12 @@ def update():
 @app.before_request
 def before_request():
     user = session.get('loginusername',None)
-    if user and not redis_store.exists('loginusername:' + user):
-        session.pop('loginusername')
+    if user:
+        # if browser session exists, but the timeout expires, then 
+        # logout the user
+        if not redis_store.exists('loginusername:' + user):
+            session.pop('loginusername')
+        else:
+            # else, reset the timeout since there is
+            # browser activity
+            redis_store.setex('loginusername:' + user,60,datetime.datetime.now())
