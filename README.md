@@ -1,3 +1,9 @@
+# If you have docker:
+```
+docker pull truthadjustr/flaskcrud 
+docker run -d truthadjustr/flaskcrud /entrypoint.sh
+```
+
 # Open terminal and
  - pip install flask
  - pip install flask-wtf
