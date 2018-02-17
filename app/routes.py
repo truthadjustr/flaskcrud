@@ -10,7 +10,8 @@ from flask import \
     request,\
     redirect,\
     url_for,\
-    session
+    session,\
+    flash
 
 ACCESS_CONTROL = {
     'johnny':'password1',
@@ -35,6 +36,7 @@ def login():
                 session['loginusername'] = user
                 redis_store.setex('loginusername:' + user,60,datetime.datetime.now())
                 return redirect(url_for('content'))
+            flash("User {} is currently logged in another session".format(user))
     if 'loginusername' not in session:
         return render_template('login.html')
     return redirect(url_for('index'))
