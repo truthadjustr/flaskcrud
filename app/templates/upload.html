@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block mycontent %}
+    <div style="margin: 0 auto;width: 800px">
+        <form method="POST" enctype="multipart/form-data">
+            <div class="col-sm-12">
+                <h4 title="Upload">Upload</h4>
+            </div>
+
+            <div class="col-sm-12">
+                <div class="panel panel-default">
+                    <div class="panel-heading" title="Upload">Upload</div>
+                    <table class="table">
+                        <tr>
+                            <td class="val col-xs-7">
+                                <div class="col-xs-12">
+                                    <input type="file" name="file" accept=".bin">
+                                </div>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+                <input type="submit" class="btn btn-primary" value="Upload">
+            </div>
+        </form>
+    </div>
+{% endblock %}

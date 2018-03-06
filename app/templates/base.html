@@ -6,13 +6,18 @@
             <li class="dropdown">
                 <a href="{{ url_for('index') }}" class="dropdown-toggle" >Home</a>
             </li>
+            {% if user and isactive %}
             <li class="dropdown">
-                {% if user and isactive %}
                 <a href="{{ url_for('logout') }}" class="dropdown-toggle" >Logout</a>
-                {% else %}
-                <a href="{{ url_for('login') }}" class="dropdown-toggle" >Login</a>
-                {% endif %}
             </li>
+            <li class="dropdown">
+                <a href="{{ url_for('upload_file') }}" class="dropdown-toggle" >Upload</a>
+            </li>
+            {% else %}
+            <li class="dropdown">
+                <a href="{{ url_for('login') }}" class="dropdown-toggle" >Login</a>
+            </li>
+            {% endif %}
         </ul>
     </nav>
 {% endblock %}
