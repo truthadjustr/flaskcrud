@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+
+{% block mycontent %}
+
+    <div style="margin: 0 auto;width: 800px">
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+
+        <h4 title="Network Configuration">Network Configuration</h4>
+        <div class="panel panel-default">
+            <div class="panel-heading" title="LAN Configuration">LAN Configuration</div>
+            <table class="table">
+                <tr>
+                    <td class="labl col-xs-5">
+                        <label for="cfg_lanIpMode">{{ form.ip_mode.label }}</label>
+                    </td>
+                    <td class="val col-xs-7">
+                        <div class="col-xs-12">{{ form.ip_mode(class_="form-control input-sm input-ed") }}</div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="labl">
+                        <label for="cfg_lanIpAddr">{{ form.ip_address.label }}</label>
+                    </td>
+                    <td class="val">
+                        <div class="col-xs-12">{{ form.ip_address(maxlength=15,class_="form-control input-sm input-ed") }}</div>
+                        <!--
+                        {% for error in form.ip_address.errors %}
+                        <span style="color:red;">[{{ error }}]</span>
+                        {% endfor %}
+                        -->
+                    </td>
+                </tr>
+                <tr>
+                    <td class="labl">
+                        <label for="cfg_lanSubnetMask">{{ form.subnet_mask.label }}</label>
+                    </td>
+                    <td class="val">
+                        <div class="col-xs-12">{{ form.subnet_mask(maxlength=15,class_="form-control input-sm input-ed") }}</div>
+                        <!--
+                        {% for error in form.subnet_mask.errors %}
+                        <span style="color:red;">[{{ error }}]</span>
+                        {% endfor %}
+                        -->
+                    </td>
+                </tr>
+                <tr>
+                    <td class="labl">
+                        <label for="cfg_lanSubnetMask">{{ form.default_gateway_address.label }}</label>
+                    </td>
+                    <td class="val">
+                        <div class="col-xs-12">{{ form.default_gateway_address(maxlength=15,class_="form-control input-sm input-ed") }}</div>
+                        <!--
+                        {% for error in form.default_gateway_address.errors %}
+                        <span style="color:red;">[{{ error }}]</span>
+                        {% endfor %}
+                        -->
+                    </td>
+                </tr>
+                <tr>
+                    <td class="labl">
+                        <label for="cfg_lanSubnetMask">{{ form.primary_dns_ip_address.label }}</label>
+                    </td>
+                    <td class="val">
+                        <div class="col-xs-12">{{ form.primary_dns_ip_address(maxlength=15,class_="form-control input-sm input-ed") }}</div>
+                        <!--
+                        {% for error in form.primary_dns_ip_address.errors %}
+                        <span style="color:red;">[{{ error }}]</span>
+                        {% endfor %}
+                        -->
+                    </td>
+                </tr>
+                <tr>
+                    <td class="labl">
+                        <label for="cfg_lanSubnetMask">{{ form.secondary_dns_ip_address.label }}</label>
+                    </td>
+                    <td class="val">
+                        <div class="col-xs-12">{{ form.secondary_dns_ip_address(maxlength=15,class_="form-control input-sm input-ed") }}</div>
+                        <!--
+                        {% for error in form.secondary_dns_ip_address.errors %}
+                        <span style="color:red;">[{{ error }}]</span>
+                        {% endfor %}
+                        -->
+                    </td>
+                </tr>
+            </table>
+        </div>
+
+        <p>{{ form.submit(class_="btn btn-primary") }}</p>
+    </form>
+    </div>
+{% endblock %}

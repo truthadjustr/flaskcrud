@@ -18,6 +18,8 @@ from flask import \
 
 from werkzeug.urls import url_parse
 
+from app.forms import LANConfiguration
+
 ACCESS_CONTROL = {
     'johnny':'password1',
     'mary':'password2',
@@ -26,6 +28,11 @@ ACCESS_CONTROL = {
 def allowed_file(filename):
     return '.' in filename and \
         filename.rsplit('.',1)[1].lower() in ALLOWED_EXTENSIONS
+
+@app.route('/networking',methods = ['GET','POST'])
+def networking():
+    form = LANConfiguration() 
+    return render_template('lanconfiguration.html',form=form)
 
 @app.route('/upload',methods = ['GET','POST'])
 #@login_required
@@ -45,7 +52,7 @@ def upload_file():
             filename = secure_filename(file.filename)
             file.save(os.path.join(app.config['UPLOAD_FOLDER'],filename))
             return redirect(url_for('index'))
-    return render_template('upload.html',user=user,isactive=False)
+    return render_template('upload.html')
 
 @app.route('/')
 @app.route('/index')
